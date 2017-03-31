@@ -1,5 +1,5 @@
 from alexandria_markup.client.alexandria_markup import *
-from alexandria_markup.client.document_proxy import DocumentProxy
+from alexandria.notebook.document_proxy import DocumentProxy
 
 
 class AlexandriaMarkupProxy:

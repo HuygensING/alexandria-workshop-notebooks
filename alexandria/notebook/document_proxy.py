@@ -18,22 +18,26 @@ class DocumentProxy:
 
     def show_text_markup(self):
         latex = self.documents.document_latex(self.uuid)
-        Latex(latex)
+        self.show_latex(latex)
 
     def show_matrix(self):
         latex = self.documents.matrix_latex(self.uuid)
-        Latex(latex)
+        self.show_latex(latex)
 
     def show_kdtree(self):
         latex = self.documents.kdtree_latex(self.uuid)
-        Latex(latex)
+        self.show_latex(latex)
 
     def show_markupdepth(self):
         latex = self.documents.markupdepth_latex(self.uuid)
-        Latex(latex)
+        self.show_latex(latex)
 
     def __str__(self):
         return "DocumentProxy::" + self.uuid
+
+    def show_latex(self, latex):
+        print(latex)
+        Latex(latex)
 
 
 class AlexandriaError(Exception):
