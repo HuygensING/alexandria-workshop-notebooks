@@ -17,6 +17,9 @@ WORKDIR ${tmp}
 USER jovyan
 RUN pip install --user pydot \
   && python setup.py install --user \
+  && git clone https://github.com/HuygensING/alexandria-markup-python-client.git \
+  && cd alexandria-markup-python-client \
+  && python setup.py install --user \
   && git clone https://github.com/HuygensING/alexandria-python-client.git \
   && cd alexandria-python-client \
   && python setup.py install --user
