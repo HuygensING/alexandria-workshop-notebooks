@@ -1,11 +1,14 @@
-from IPython.display import Latex
+from IPython.display import display, SVG, HTML
 
 from alexandria_markup.client.alexandria_markup import AlexandriaMarkup
+from alexandria.notebook.latex_util import LaTeXUtil
+
 
 class DocumentProxy:
-    def __init__(self, uuid: str, alexandria: AlexandriaMarkup):
+    def __init__(self, uuid: str, alexandria: AlexandriaMarkup, latexutil: LaTeXUtil):
         self.uuid = uuid
         self.documents = alexandria.documents
+        self.latexutil = latexutil
 
     def __dir__(self):
         return ['uuid', 'set_lmnl', 'get_lmnl', 'show_text_markup', 'show_matrix', 'show_kdtree', 'show_markupdepth']
@@ -36,8 +39,9 @@ class DocumentProxy:
         return "DocumentProxy::" + self.uuid
 
     def show_latex(self, latex):
-        print(latex)
-        Latex(latex)
+        svg_url = self.latexutil.svg_uri(latex)
+        display(SVG(url=svg_url))
+        display(HTML('<a href="' + svg_url + '" target="_new" >open in new tab</a>'))
 
 
 class AlexandriaError(Exception):
