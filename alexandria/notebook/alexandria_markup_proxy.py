@@ -9,10 +9,13 @@ class AlexandriaMarkupProxy:
         self.latexutil = LaTeXUtil(latex_server_url)
 
     def __dir__(self):
-        return ['add_document']
+        return ['add_document_from_lmnl_file', 'add_document_from_lmnl_text']
 
-    def add_document(self, path):
+    def add_document_from_lmnl_file(self, path):
         with open(path, 'r') as f:
             lmnl = f.read()
+        return self.add_document_from_lmnl_text(self, lmnl)
+
+    def add_document_from_lmnl_text(self, lmnl):
         uuid = self.alexandria.documents.add(lmnl).uuid
         return DocumentProxy(uuid, self.alexandria, self.latexutil)
