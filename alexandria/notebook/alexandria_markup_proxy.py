@@ -14,7 +14,7 @@ class AlexandriaMarkupProxy:
     def add_document_from_lmnl_file(self, path):
         with open(path, 'r') as f:
             lmnl = f.read()
-        return self.add_document_from_lmnl_text(self, lmnl)
+        return self.add_document_from_lmnl_text(lmnl)
 
     def add_document_from_lmnl_text(self, lmnl):
         uuid = self.alexandria.documents.add(lmnl).uuid
