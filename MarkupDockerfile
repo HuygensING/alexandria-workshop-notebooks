@@ -4,9 +4,8 @@ FROM jupyter/datascience-notebook
 USER root
 ENV vol=/data
 RUN apt-get update \
-  && apt-get install -y graphviz \
-  && mkdir -p ${vol}/examples/data \
-  && mkdir -p ${vol}/work \
+#  && apt-get install -y graphviz \
+  && mkdir -p ${vol}/examples/data ${vol}/work \
   && chown -R jovyan ${vol}
 COPY markup-init.ipynb ${vol}/examples/
 COPY data/*lmnl ${vol}/examples/data/
