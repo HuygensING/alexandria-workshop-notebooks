@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   alexandria:
     image: huygensing/alexandria-markup-server:latest
@@ -19,9 +19,11 @@ services:
       - BASE_URI=http://192.168.99.100:8000
 
   notebook:
-    image: huygensing/alexandria-markup-notebook
+    image: huygensing/alexandria-markup-notebook:latest
     ports:
       - 80:8888
     depends_on:
       - latex
       - alexandria
+    volumes:
+      - /c/workspaces:/work
