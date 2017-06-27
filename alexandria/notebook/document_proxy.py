@@ -11,13 +11,19 @@ class DocumentProxy:
         self.latexutil = latexutil
 
     def __dir__(self):
-        return ['uuid', 'set_lmnl', 'get_lmnl', 'show_text_markup', 'show_matrix', 'show_kdtree', 'show_markupdepth']
+        return ['uuid', 'set_lmnl', 'get_lmnl', 'show_text_markup', 'show_matrix', 'show_kdtree', 'show_markupdepth', 'query']
+
+    def __str__(self):
+        return "DocumentProxy::" + self.uuid
 
     def set_lmnl(self, lmnl):
         self.documents.set(self.uuid, lmnl)
 
     def get_lmnl(self):
         return self.documents.lmnl(self.uuid)
+
+    def query(self, tagql):
+        return self.documents.query(self.uuid, tagql)
 
     def show_text_markup(self):
         latex = self.documents.document_latex(self.uuid)
@@ -34,9 +40,6 @@ class DocumentProxy:
     def show_markupdepth(self):
         latex = self.documents.markupdepth_latex(self.uuid)
         self.show_latex(latex)
-
-    def __str__(self):
-        return "DocumentProxy::" + self.uuid
 
     def show_latex(self, latex):
         svg_url = self.latexutil.svg_uri(latex)

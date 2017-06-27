@@ -27,5 +27,5 @@ RUN pip install --user pydot \
 WORKDIR ${vol}
 
 EXPOSE 8888
-ENTRYPOINT jupyter notebook
+ENTRYPOINT start-notebook.sh --NotebookApp.token=''
 VOLUME ${vol}/work
