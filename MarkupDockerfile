@@ -1,4 +1,4 @@
-FROM jupyter/datascience-notebook
+FROM jupyter/minimal-notebook
 # user is set to jovyan
 
 USER root
