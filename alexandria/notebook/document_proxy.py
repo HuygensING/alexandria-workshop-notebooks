@@ -11,13 +11,10 @@ class DocumentProxy:
         self.latexutil = latexutil
 
     def __dir__(self):
-        return ['uuid', 'set_lmnl', 'get_lmnl', 'show_text_markup', 'show_matrix', 'show_kdtree', 'show_markupdepth', 'query']
+        return ['uuid', 'get_lmnl', 'show_text_markup', 'show_matrix', 'show_kdtree', 'show_markupdepth']
 
     def __str__(self):
         return "DocumentProxy::" + self.uuid
-
-    def set_lmnl(self, lmnl):
-        self.documents.set(self.uuid, lmnl)
 
     def get_lmnl(self):
         return self.documents.lmnl(self.uuid)
