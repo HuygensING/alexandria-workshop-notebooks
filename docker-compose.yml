@@ -1,11 +1,29 @@
-version: '2'
+version: '3'
 services:
-    jupyter:
-      build: .
-      ports:
-        - "80:9999"
-      depends_on:
-         - alexandria
+  alexandria:
+    image: huygensing/alexandria-markup-server:latest
+    ports:
+      - 8002:8080
+      - 8003:8081
+    environment:
+      - BASE_URI=http://192.168.99.100:8002
 
-    alexandria:
-      image: huygensing/alexandria:develop
+  latex:
+    image: huygensing/tex-util-server:latest
+    ports:
+      - 8000:8080
+      - 8001:8081
+    depends_on:
+      - alexandria
+    environment:
+      - BASE_URI=http://192.168.99.100:8000
+
+  notebook:
+    image: huygensing/alexandria-markup-notebook:latest
+    ports:
+      - 80:8888
+    depends_on:
+      - latex
+      - alexandria
+    volumes:
+      - /c/Users/bramb:/work

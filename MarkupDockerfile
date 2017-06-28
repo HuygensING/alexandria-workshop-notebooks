@@ -1,15 +1,14 @@
-FROM jupyter/datascience-notebook
+FROM jupyter/minimal-notebook
 # user is set to jovyan
 
 USER root
 ENV vol=/data
 RUN apt-get update \
-  && apt-get install -y graphviz \
-  && mkdir -p ${vol}/examples/data \
-  && mkdir -p ${vol}/work \
+#  && apt-get install -y graphviz \
+  && mkdir -p ${vol}/examples/data ${vol}/work \
   && chown -R jovyan ${vol}
-COPY *.ipynb ${vol}/examples/
-COPY data/* ${vol}/examples/data/
+COPY markup-init.ipynb ${vol}/examples/
+COPY data/*lmnl ${vol}/examples/data/
 
 ENV tmp=/tmp
 ADD . ${tmp}

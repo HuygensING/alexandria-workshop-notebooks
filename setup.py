@@ -3,7 +3,7 @@
 from distutils.core import setup
 
 setup(name='AlexandriaNotebook',
-      version='1.0',
+      version='2.0',
       description='Alexandria notebook utils',
       author='HuygensING',
       author_email='alexandria@huygens.knaw.nl',
