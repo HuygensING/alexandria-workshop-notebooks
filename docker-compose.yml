@@ -26,4 +26,4 @@ services:
       - latex
       - alexandria
     volumes:
-      - /c/Users/bramb:/work
+      - /c/Users/bramb/work:/work

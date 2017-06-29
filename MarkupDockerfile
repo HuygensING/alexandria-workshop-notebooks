@@ -1,11 +1,13 @@
 FROM jupyter/minimal-notebook
 # user is set to jovyan
 
+VOLUME /work
 USER root
 ENV vol=/data
 RUN apt-get update \
 #  && apt-get install -y graphviz \
-  && mkdir -p ${vol}/examples/data ${vol}/work \
+  && mkdir -p ${vol}/examples/data \
+  && ln -s /work ${vol}/work
   && chown -R jovyan ${vol}
 COPY markup-init.ipynb ${vol}/examples/
 COPY data/*lmnl ${vol}/examples/data/
@@ -27,4 +29,3 @@ WORKDIR ${vol}
 
 EXPOSE 8888
 ENTRYPOINT start-notebook.sh --NotebookApp.token=''
-VOLUME ${vol}/work
