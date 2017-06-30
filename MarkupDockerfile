@@ -7,7 +7,7 @@ ENV vol=/data
 RUN apt-get update \
 #  && apt-get install -y graphviz \
   && mkdir -p ${vol}/examples/data \
-  && ln -s /work ${vol}/work
+  && ln -s /work ${vol}/work \
   && chown -R jovyan ${vol}
 COPY markup-init.ipynb ${vol}/examples/
 COPY data/*lmnl ${vol}/examples/data/

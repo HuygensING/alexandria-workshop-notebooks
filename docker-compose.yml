@@ -1,5 +1,6 @@
 version: '3'
 services:
+  # the alexandria server
   alexandria:
     image: huygensing/alexandria-markup-server:latest
     ports:
@@ -8,6 +9,7 @@ services:
     environment:
       - BASE_URI=http://192.168.99.100:8002
 
+  # the tex-util server, which can convert the LaTeX from the alexandria server to SVG)
   latex:
     image: huygensing/tex-util-server:latest
     ports:
@@ -18,6 +20,7 @@ services:
     environment:
       - BASE_URI=http://192.168.99.100:8000
 
+  # the relevant notebooks and python code to connect to the alexandria and latex services
   notebook:
     image: huygensing/alexandria-markup-notebook:latest
     ports:
