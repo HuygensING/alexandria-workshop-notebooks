@@ -29,4 +29,5 @@ services:
       - latex
       - alexandria
     volumes:
+      # Your work notebooks will be stored here
       - /c/Users/bramb/work:/work
