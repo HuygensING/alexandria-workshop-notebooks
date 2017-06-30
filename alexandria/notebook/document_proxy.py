@@ -11,7 +11,7 @@ class DocumentProxy:
         self.latexutil = latexutil
 
     def __dir__(self):
-        return ['uuid', 'get_lmnl', 'show_text_markup', 'show_matrix', 'show_kdtree', 'show_markupdepth']
+        return ['uuid', 'get_lmnl', 'show_text_markup', 'show_matrix', 'show_kdtree', 'show_markupdepth', 'query']
 
     def __str__(self):
         return "DocumentProxy::" + self.uuid
