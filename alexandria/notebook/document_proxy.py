@@ -1,4 +1,5 @@
-from IPython.display import display, SVG, HTML
+from IPython.display import SVG, HTML
+from IPython.core.display import display
 
 from alexandria_markup.client.alexandria_markup import AlexandriaMarkup
 from alexandria.notebook.latex_util import LaTeXUtil
@@ -24,21 +25,21 @@ class DocumentProxy:
 
     def show_text_markup(self):
         latex = self.documents.document_latex(self.uuid)
-        self.show_latex(latex)
+        self._show_latex(latex)
 
     def show_matrix(self):
         latex = self.documents.matrix_latex(self.uuid)
-        self.show_latex(latex)
+        self._show_latex(latex)
 
     def show_kdtree(self):
         latex = self.documents.kdtree_latex(self.uuid)
-        self.show_latex(latex)
+        self._show_latex(latex)
 
     def show_markupdepth(self):
         latex = self.documents.markupdepth_latex(self.uuid)
-        self.show_latex(latex)
+        self._show_latex(latex)
 
-    def show_latex(self, latex):
+    def _show_latex(self, latex):
         svg_url = self.latexutil.svg_uri(latex)
         display(SVG(url=svg_url))
         display(HTML('<a href="' + svg_url + '" target="_new" >open in new tab</a>'))
