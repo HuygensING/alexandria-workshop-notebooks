@@ -13,12 +13,12 @@ class AlexandriaMarkupProxy:
                 'add_document_from_lmnl_text', 'add_document_from_texmecs_text']
 
     def add_document_from_lmnl_file(self, path):
-        with open(path, 'r') as f:
+        with open(path, mode='r', encoding='utf-8') as f:
             lmnl = f.read()
         return self.add_document_from_lmnl_text(lmnl)
 
     def add_document_from_texmecs_file(self, path):
-        with open(path, 'r') as f:
+        with open(path, mode='r', encoding='utf-8') as f:
             texmecs = f.read()
         return self.add_document_from_texmecs_text(texmecs)
 
