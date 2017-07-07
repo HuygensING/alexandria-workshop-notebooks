@@ -1,4 +1,4 @@
-from IPython.display import SVG, HTML
+from IPython.display import SVG, HTML, IFrame
 from IPython.core.display import display
 
 from alexandria_markup.client.alexandria_markup import AlexandriaMarkup
@@ -41,7 +41,7 @@ class DocumentProxy:
 
     def _show_latex(self, latex):
         svg_url = self.latexutil.svg_uri(latex)
-        display(SVG(url=svg_url))
+        display(IFrame(src=svg_url, width=1000, height=300))
         display(HTML('<a href="' + svg_url + '" target="_new" >open in new tab</a>'))
 
 
