@@ -41,7 +41,7 @@ class DocumentProxy:
 
     def _show_latex(self, latex):
         svg_url = self.latexutil.svg_uri(latex)
-        display(IFrame(src=svg_url, width=1000, height=300))
+        display(IFrame(src=svg_url, width=950, height=300))
         display(HTML('<a href="' + svg_url + '" target="_new" >open in new tab</a>'))
 
 
