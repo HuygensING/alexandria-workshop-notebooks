@@ -5,14 +5,17 @@
 1. move to the directory containing `docker-compose.yml`
 1. choose the relevant step 4 for editing `docker-compose.yml`, depending on whether you're using the Docker Toolbox or not. 
 
-Editing the `docker-compose.yml` when using Docker Toolbox: 
+using Docker Toolbox: 
+
 4. run `docker-machine ip` to find out your docker-machine IP address, then
    replace `192.168.99.100` in lines 10 and 21 by your docker-machine IP address.
 
-Editing the `docker-compose.yml` when using regular Docker: 
+using regular Docker: 
+
 4. replace `192.168.99.100` in lines 10 and 21 by `localhost`.
 
-Editing the `docker-compose.yml` when using Docker on Mac: 
+using Docker on Mac: 
+
 4. replace `192.168.99.100` in lines 10 and 21 by `docker.for.mac.localhost`. (https://docs.docker.com/docker-for-mac/networking/#use-cases-and-workarounds)
 
 5. replace `/c/Users/bramb/work` in line 33 with a local directory
