@@ -9,8 +9,8 @@ RUN apt-get update \
   && mkdir -p ${vol}/examples/data \
   && ln -s /work ${vol}/work \
   && chown -R jovyan ${vol}
-COPY markup-init.ipynb ${vol}/examples/
-COPY data/*lmnl ${vol}/examples/data/
+COPY markup-notebooks/* ${vol}/
+COPY data/*lmnl data/*texmecs ${vol}/examples/data/
 
 ENV tmp=/tmp
 ADD . ${tmp}
