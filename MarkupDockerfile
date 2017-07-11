@@ -9,7 +9,7 @@ RUN apt-get update \
   && mkdir -p ${vol}/examples/data \
   && ln -s /work ${vol}/work \
   && chown -R jovyan ${vol}
-COPY markup-notebooks/* ${vol}/
+COPY markup_notebooks ${vol}/
 COPY data/*lmnl data/*texmecs ${vol}/examples/data/
 
 ENV tmp=/tmp
