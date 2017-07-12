@@ -14,6 +14,8 @@
    limitations under the License.
 """
 
+import sys
+
 from alexandria_markup.client.alexandria_markup import *
 from alexandria.notebook.latex_util import LaTeXUtil
 from alexandria.notebook.document_proxy import DocumentProxy
@@ -39,9 +41,20 @@ class AlexandriaMarkupProxy:
         return self.add_document_from_texmecs_text(texmecs)
 
     def add_document_from_lmnl_text(self, lmnl):
-        uuid = self.alexandria.documents.add_from_lmnl(lmnl).uuid
-        return DocumentProxy(uuid, self.alexandria, self.latexutil)
+        try:
+            uuid = self.alexandria.documents.add_from_lmnl(lmnl).uuid
+            return DocumentProxy(uuid, self.alexandria, self.latexutil)
+        except Exception as errMsg:
+            print('Error importing LMNL!', file=sys.stderr)
+            print(errMsg, file=sys.stderr)
+            raise errMsg
 
     def add_document_from_texmecs_text(self, texmecs):
-        uuid = self.alexandria.documents.add_from_texmecs(texmecs).uuid
-        return DocumentProxy(uuid, self.alexandria, self.latexutil)
+        try:
+            uuid = self.alexandria.documents.add_from_texmecs(texmecs).uuid
+            return DocumentProxy(uuid, self.alexandria, self.latexutil)
+        except Exception as errMsg:
+            print('Error importing TexMECS!', file=sys.stderr)
+            print(errMsg, file=sys.stderr)
+            raise errMsg
+
