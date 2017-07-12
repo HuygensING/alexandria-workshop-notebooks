@@ -10,6 +10,7 @@ RUN apt-get update \
   && ln -s /work ${vol}/work \
   && chown -R jovyan ${vol}
 COPY markup_notebooks ${vol}/
+COPY markup_notebooks/examples/1-setup.ipynb ${vol}/examples/markup-init.ipynb
 COPY data/*lmnl data/*texmecs ${vol}/examples/data/
 
 ENV tmp=/tmp
