@@ -14,6 +14,7 @@
    limitations under the License.
 """
 
+
 class AnnotationProxy:
     def __init__(self):
         pass

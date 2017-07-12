@@ -14,6 +14,8 @@
    limitations under the License.
 """
 
+import sys
+
 from IPython.display import SVG, HTML, IFrame
 from IPython.core.display import display
 
@@ -37,7 +39,11 @@ class DocumentProxy:
         return self.documents.lmnl(self.uuid)
 
     def query(self, tagql):
-        return self.documents.query(self.uuid, tagql)
+        result = self.documents.query(self.uuid, tagql)
+        if not result['ok']:
+            print("error(s) in query:\n", result['errors'], file=sys.stderr)
+
+        return result
 
     def show_text_markup(self):
         latex = self.documents.document_latex(self.uuid)
